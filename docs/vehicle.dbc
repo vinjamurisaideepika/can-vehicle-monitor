@@ -1,0 +1,37 @@
+VERSION ""
+
+NS_ :
+
+BS_:
+
+BU_: ECU DASH
+
+BO_ 192 ENGINE_STATUS: 8 ECU
+ SG_ RPM : 0|16@1+ (1,0) [0|8000] "rpm" DASH
+ SG_ Speed : 16|8@1+ (1,0) [0|255] "km/h" DASH
+ SG_ CoolantTemp : 24|8@1+ (1,-40) [-40|215] "degC" DASH
+ SG_ Throttle : 32|8@1+ (1,0) [0|100] "%" DASH
+ SG_ Gear : 40|8@1+ (1,0) [0|6] "" DASH
+ SG_ Counter : 48|4@1+ (1,0) [0|15] "" DASH
+ SG_ CheckEngine : 52|1@1+ (1,0) [0|1] "" DASH
+ SG_ Checksum : 56|8@1+ (1,0) [0|255] "" DASH
+
+BO_ 960 BODY_STATUS: 8 ECU
+ SG_ Battery : 0|16@1+ (0.001,0) [0|20] "V" DASH
+ SG_ Fuel : 16|8@1+ (1,0) [0|100] "%" DASH
+ SG_ Ignition : 24|1@1+ (1,0) [0|1] "" DASH
+ SG_ DoorOpen : 25|1@1+ (1,0) [0|1] "" DASH
+ SG_ BeltFastened : 26|1@1+ (1,0) [0|1] "" DASH
+ SG_ Counter : 48|4@1+ (1,0) [0|15] "" DASH
+ SG_ Checksum : 56|8@1+ (1,0) [0|255] "" DASH
+
+BO_ 672 DASH_STATUS: 8 DASH
+ SG_ Warnings : 0|8@1+ (1,0) [0|255] "" ECU
+ SG_ RxOk : 8|8@1+ (1,0) [0|255] "" ECU
+ SG_ RxRejected : 16|8@1+ (1,0) [0|255] "" ECU
+ SG_ Counter : 48|4@1+ (1,0) [0|15] "" ECU
+ SG_ Checksum : 56|8@1+ (1,0) [0|255] "" ECU
+
+CM_ BO_ 192 "Engine data, 100 ms cycle";
+CM_ BO_ 960 "Body data, 500 ms cycle";
+CM_ BO_ 672 "Dashboard status and warnings, 200 ms cycle";
